@@ -109,24 +109,7 @@ def depthFirstSearch(problem):
                 stack.push([node, tmpdir])
 
     if solutionFlag:
-        from game import Directions
-
-        w = Directions.WEST
-        e = Directions.EAST
-        n = Directions.NORTH
-        s = Directions.SOUTH
-        route = []
-        for node in result:
-            if node == 'South':
-                route.append(s)
-            elif node == 'North':
-                route.append(n)
-            elif node == 'East':
-                route.append(e)
-            elif node == 'West':
-                route.append(w)
-
-        return route
+        return result
 
 
 def breadthFirstSearch(problem):
@@ -156,24 +139,7 @@ def breadthFirstSearch(problem):
                 queue.push([node, tmpdir])
 
     if solutionFlag:
-        from game import Directions
-
-        w = Directions.WEST
-        e = Directions.EAST
-        n = Directions.NORTH
-        s = Directions.SOUTH
-        route = []
-        for node in result:
-            if node == 'South':
-                route.append(s)
-            elif node == 'North':
-                route.append(n)
-            elif node == 'East':
-                route.append(e)
-            elif node == 'West':
-                route.append(w)
-
-        return route
+        return result
 
 
 
