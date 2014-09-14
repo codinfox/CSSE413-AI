@@ -372,17 +372,35 @@ def cornersHeuristic(state, problem):
 
     cornerFlags = state[1]
     current = state[0]
-    toexplore = None
     heur = 0
     unexplored = []
     for idx in range(4):
         if not cornerFlags[idx]:
             unexplored.append(corners[idx])
-
+    # TODO: the algorithm is inconsistent
     while len(unexplored) != 0:
         toexplore = min(unexplored, key=(lambda x: util.manhattanDistance(current, x)))
         del unexplored[unexplored.index(toexplore)]
-        heur += util.manhattanDistance(current, toexplore)
+        vrange = None
+        hrange = None
+        if toexplore[1] < current[1]:
+            vrange = range(current[1], toexplore[1], -1)
+        else:
+            vrange = range(current[1], toexplore[1], 1)
+        if toexplore[0] < current[0]:
+            hrange = range(current[0], toexplore[0], -1)
+        else:
+            hrange = range(current[0], toexplore[0], 1)
+        for i in vrange:
+            if walls[current[0]]i]:
+                heur += 3
+            else:
+                heur += 1
+        for i in hrange:
+            if walls[i][toexplore[1]]:
+                heur += 3
+            else:
+                heur += 1
         current = toexplore
 
     return heur  # Default to trivial solution

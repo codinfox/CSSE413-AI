@@ -91,7 +91,6 @@ def depthFirstSearch(problem):
     stack = util.Stack()
     stack.push([[problem.getStartState(), 0, 0], []])
     result = None
-    solutionFlag = False
     # This is a pre-order traversal of graph, actions is used to record actions
     while not stack.isEmpty():
         top = stack.pop()
@@ -99,7 +98,6 @@ def depthFirstSearch(problem):
         position = top[0][0]
         if problem.isGoalState(position):
             result = actions
-            solutionFlag = True
             break
         for node in problem.getSuccessors(position):
             if node[0] not in explored:
@@ -107,9 +105,7 @@ def depthFirstSearch(problem):
                 tmpdir.append(node[1])
                 explored.add(node[0])
                 stack.push([node, tmpdir])
-
-    if solutionFlag:
-        return result
+    return result
 
 
 def breadthFirstSearch(problem):
@@ -121,14 +117,12 @@ def breadthFirstSearch(problem):
     queue = util.Queue()
     queue.push([[problem.getStartState(), 0, 0], []])
     explored.add(problem.getStartState())
-    solutionFlag = False
     result = None
     while not queue.isEmpty():
         head = queue.pop()
         successors = problem.getSuccessors(head[0][0])
         directionlist = head[1]
         if problem.isGoalState(head[0][0]):
-            solutionFlag = True
             result = directionlist
             break
         for node in successors:
@@ -138,8 +132,7 @@ def breadthFirstSearch(problem):
                 explored.add(node[0])
                 queue.push([node, tmpdir])
 
-    if solutionFlag:
-        return result
+    return result
 
 
 def uniformCostSearch(problem):
@@ -163,8 +156,7 @@ def uniformCostSearch(problem):
                 tmpactions.append(node[1])
                 frontier.push([node, tmpactions])
 
-    if result is not None:
-        return result
+    return result
 
 
 def nullHeuristic(state, problem=None):
@@ -191,14 +183,17 @@ def aStarSearch(problem, heuristic=nullHeuristic):
         if problem.isGoalState(position):
             result = actions
             break
+        prevH = heuristic(position, problem)
         for node in problem.getSuccessors(position):
             if node[0] not in explored:
+                nowH = heuristic(node[0], problem)
+                if prevH > nowH+1:
+                    raise Exception("not consistent")
                 tmpactions = actions[:]
                 tmpactions.append(node[1])
                 frontier.push([node, tmpactions])
 
-    if result is not None:
-        return result
+    return result
 
 
 # Abbreviations
