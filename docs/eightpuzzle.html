@@ -1,10 +1,10 @@
 <html>
-  <head>
-  <title>eightpuzzle.py</title>
-  </head>
-  <body>
-  <h3>eightpuzzle.py (<a href="../eightpuzzle.py">original</a>)</h3>
-  <hr>
+<head>
+    <title>eightpuzzle.py</title>
+</head>
+<body>
+<h3>eightpuzzle.py (<a href="../eightpuzzle.py">original</a>)</h3>
+<hr>
   <pre>
 <span style="color: green; font-style: italic"># eightpuzzle.py
 # --------------
@@ -29,7 +29,8 @@
  the EightPuzzleSearchProblem class.
  """
 
- </span><span style="color: blue; font-weight: bold">def </span>__init__<span style="font-weight: bold">( </span><span style="color: blue">self</span><span style="font-weight: bold">, </span>numbers <span style="font-weight: bold">):
+ </span><span style="color: blue; font-weight: bold">def </span>__init__<span style="font-weight: bold">( </span><span
+        style="color: blue">self</span><span style="font-weight: bold">, </span>numbers <span style="font-weight: bold">):
    </span><span style="color: darkred">"""
      Constructs a new eight puzzle from an ordering of numbers.
 
@@ -51,17 +52,32 @@
    The configuration of the puzzle is stored in a 2-dimensional
    list (a list of lists) 'cells'.
    """
-   </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>cells <span style="font-weight: bold">= []
-   </span>numbers <span style="font-weight: bold">= </span>numbers<span style="font-weight: bold">[:] </span><span style="color: green; font-style: italic"># Make a copy so as not to cause side-effects.
+   </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>cells <span
+        style="font-weight: bold">= []
+   </span>numbers <span style="font-weight: bold">= </span>numbers<span style="font-weight: bold">[:] </span><span
+        style="color: green; font-style: italic"># Make a copy so as not to cause side-effects.
    </span>numbers<span style="font-weight: bold">.</span>reverse<span style="font-weight: bold">()
-   </span><span style="color: blue; font-weight: bold">for </span>row <span style="color: blue; font-weight: bold">in </span>range<span style="font-weight: bold">( </span><span style="color: red">3 </span><span style="font-weight: bold">):
-     </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>cells<span style="font-weight: bold">.</span>append<span style="font-weight: bold">( [] )
-     </span><span style="color: blue; font-weight: bold">for </span>col <span style="color: blue; font-weight: bold">in </span>range<span style="font-weight: bold">( </span><span style="color: red">3 </span><span style="font-weight: bold">):
-       </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>cells<span style="font-weight: bold">[</span>row<span style="font-weight: bold">].</span>append<span style="font-weight: bold">( </span>numbers<span style="font-weight: bold">.</span>pop<span style="font-weight: bold">() )
-       </span><span style="color: blue; font-weight: bold">if </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>cells<span style="font-weight: bold">[</span>row<span style="font-weight: bold">][</span>col<span style="font-weight: bold">] == </span><span style="color: red">0</span><span style="font-weight: bold">:
-         </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>blankLocation <span style="font-weight: bold">= </span>row<span style="font-weight: bold">, </span>col
+   </span><span style="color: blue; font-weight: bold">for </span>row <span
+        style="color: blue; font-weight: bold">in </span>range<span style="font-weight: bold">( </span><span
+        style="color: red">3 </span><span style="font-weight: bold">):
+     </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>cells<span
+        style="font-weight: bold">.</span>append<span style="font-weight: bold">( [] )
+     </span><span style="color: blue; font-weight: bold">for </span>col <span
+        style="color: blue; font-weight: bold">in </span>range<span style="font-weight: bold">( </span><span
+        style="color: red">3 </span><span style="font-weight: bold">):
+       </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>cells<span
+        style="font-weight: bold">[</span>row<span style="font-weight: bold">].</span>append<span
+        style="font-weight: bold">( </span>numbers<span style="font-weight: bold">.</span>pop<span
+        style="font-weight: bold">() )
+       </span><span style="color: blue; font-weight: bold">if </span><span style="color: blue">self</span><span
+        style="font-weight: bold">.</span>cells<span style="font-weight: bold">[</span>row<span
+        style="font-weight: bold">][</span>col<span style="font-weight: bold">] == </span><span
+        style="color: red">0</span><span style="font-weight: bold">:
+         </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>blankLocation <span
+        style="font-weight: bold">= </span>row<span style="font-weight: bold">, </span>col
 
- <span style="color: blue; font-weight: bold">def </span>isGoal<span style="font-weight: bold">( </span><span style="color: blue">self </span><span style="font-weight: bold">):
+ <span style="color: blue; font-weight: bold">def </span>isGoal<span style="font-weight: bold">( </span><span
+        style="color: blue">self </span><span style="font-weight: bold">):
    </span><span style="color: darkred">"""
      Checks to see if the puzzle is in its goal state.
 
@@ -80,14 +96,22 @@
    False
    """
    </span>current <span style="font-weight: bold">= </span><span style="color: red">0
-   </span><span style="color: blue; font-weight: bold">for </span>row <span style="color: blue; font-weight: bold">in </span>range<span style="font-weight: bold">( </span><span style="color: red">3 </span><span style="font-weight: bold">):
-    </span><span style="color: blue; font-weight: bold">for </span>col <span style="color: blue; font-weight: bold">in </span>range<span style="font-weight: bold">( </span><span style="color: red">3 </span><span style="font-weight: bold">):
-      </span><span style="color: blue; font-weight: bold">if </span>current <span style="font-weight: bold">!= </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>cells<span style="font-weight: bold">[</span>row<span style="font-weight: bold">][</span>col<span style="font-weight: bold">]:
+   </span><span style="color: blue; font-weight: bold">for </span>row <span
+        style="color: blue; font-weight: bold">in </span>range<span style="font-weight: bold">( </span><span
+        style="color: red">3 </span><span style="font-weight: bold">):
+    </span><span style="color: blue; font-weight: bold">for </span>col <span
+        style="color: blue; font-weight: bold">in </span>range<span style="font-weight: bold">( </span><span
+        style="color: red">3 </span><span style="font-weight: bold">):
+      </span><span style="color: blue; font-weight: bold">if </span>current <span
+        style="font-weight: bold">!= </span><span style="color: blue">self</span><span
+        style="font-weight: bold">.</span>cells<span style="font-weight: bold">[</span>row<span
+        style="font-weight: bold">][</span>col<span style="font-weight: bold">]:
         </span><span style="color: blue; font-weight: bold">return False
       </span>current <span style="font-weight: bold">+= </span><span style="color: red">1
    </span><span style="color: blue; font-weight: bold">return True
 
- def </span>legalMoves<span style="font-weight: bold">( </span><span style="color: blue">self </span><span style="font-weight: bold">):
+ def </span>legalMoves<span style="font-weight: bold">( </span><span style="color: blue">self </span><span
+        style="font-weight: bold">):
    </span><span style="color: darkred">"""
      Returns a list of legal moves from the current state.
 
@@ -98,18 +122,28 @@
    ['down', 'right']
    """
    </span>moves <span style="font-weight: bold">= []
-   </span>row<span style="font-weight: bold">, </span>col <span style="font-weight: bold">= </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>blankLocation
-   <span style="color: blue; font-weight: bold">if</span><span style="font-weight: bold">(</span>row <span style="font-weight: bold">!= </span><span style="color: red">0</span><span style="font-weight: bold">):
-     </span>moves<span style="font-weight: bold">.</span>append<span style="font-weight: bold">(</span><span style="color: red">'up'</span><span style="font-weight: bold">)
-   </span><span style="color: blue; font-weight: bold">if</span><span style="font-weight: bold">(</span>row <span style="font-weight: bold">!= </span><span style="color: red">2</span><span style="font-weight: bold">):
-     </span>moves<span style="font-weight: bold">.</span>append<span style="font-weight: bold">(</span><span style="color: red">'down'</span><span style="font-weight: bold">)
-   </span><span style="color: blue; font-weight: bold">if</span><span style="font-weight: bold">(</span>col <span style="font-weight: bold">!= </span><span style="color: red">0</span><span style="font-weight: bold">):
-     </span>moves<span style="font-weight: bold">.</span>append<span style="font-weight: bold">(</span><span style="color: red">'left'</span><span style="font-weight: bold">)
-   </span><span style="color: blue; font-weight: bold">if</span><span style="font-weight: bold">(</span>col <span style="font-weight: bold">!= </span><span style="color: red">2</span><span style="font-weight: bold">):
-     </span>moves<span style="font-weight: bold">.</span>append<span style="font-weight: bold">(</span><span style="color: red">'right'</span><span style="font-weight: bold">)
+   </span>row<span style="font-weight: bold">, </span>col <span style="font-weight: bold">= </span><span
+        style="color: blue">self</span><span style="font-weight: bold">.</span>blankLocation
+   <span style="color: blue; font-weight: bold">if</span><span style="font-weight: bold">(</span>row <span
+        style="font-weight: bold">!= </span><span style="color: red">0</span><span style="font-weight: bold">):
+     </span>moves<span style="font-weight: bold">.</span>append<span style="font-weight: bold">(</span><span
+        style="color: red">'up'</span><span style="font-weight: bold">)
+   </span><span style="color: blue; font-weight: bold">if</span><span style="font-weight: bold">(</span>row <span
+        style="font-weight: bold">!= </span><span style="color: red">2</span><span style="font-weight: bold">):
+     </span>moves<span style="font-weight: bold">.</span>append<span style="font-weight: bold">(</span><span
+        style="color: red">'down'</span><span style="font-weight: bold">)
+   </span><span style="color: blue; font-weight: bold">if</span><span style="font-weight: bold">(</span>col <span
+        style="font-weight: bold">!= </span><span style="color: red">0</span><span style="font-weight: bold">):
+     </span>moves<span style="font-weight: bold">.</span>append<span style="font-weight: bold">(</span><span
+        style="color: red">'left'</span><span style="font-weight: bold">)
+   </span><span style="color: blue; font-weight: bold">if</span><span style="font-weight: bold">(</span>col <span
+        style="font-weight: bold">!= </span><span style="color: red">2</span><span style="font-weight: bold">):
+     </span>moves<span style="font-weight: bold">.</span>append<span style="font-weight: bold">(</span><span
+        style="color: red">'right'</span><span style="font-weight: bold">)
    </span><span style="color: blue; font-weight: bold">return </span>moves
 
- <span style="color: blue; font-weight: bold">def </span>result<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>move<span style="font-weight: bold">):
+ <span style="color: blue; font-weight: bold">def </span>result<span style="font-weight: bold">(</span><span
+        style="color: blue">self</span><span style="font-weight: bold">, </span>move<span style="font-weight: bold">):
    </span><span style="color: darkred">"""
      Returns a new eightPuzzle with the current state and blankLocation
    updated based on the provided move.
@@ -121,34 +155,64 @@
    NOTE: This function *does not* change the current object.  Instead,
    it returns a new object.
    """
-   </span>row<span style="font-weight: bold">, </span>col <span style="font-weight: bold">= </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>blankLocation
-   <span style="color: blue; font-weight: bold">if</span><span style="font-weight: bold">(</span>move <span style="font-weight: bold">== </span><span style="color: red">'up'</span><span style="font-weight: bold">):
-     </span>newrow <span style="font-weight: bold">= </span>row <span style="font-weight: bold">- </span><span style="color: red">1
+   </span>row<span style="font-weight: bold">, </span>col <span style="font-weight: bold">= </span><span
+        style="color: blue">self</span><span style="font-weight: bold">.</span>blankLocation
+   <span style="color: blue; font-weight: bold">if</span><span style="font-weight: bold">(</span>move <span
+        style="font-weight: bold">== </span><span style="color: red">'up'</span><span style="font-weight: bold">):
+     </span>newrow <span style="font-weight: bold">= </span>row <span style="font-weight: bold">- </span><span
+        style="color: red">1
      </span>newcol <span style="font-weight: bold">= </span>col
-   <span style="color: blue; font-weight: bold">elif</span><span style="font-weight: bold">(</span>move <span style="font-weight: bold">== </span><span style="color: red">'down'</span><span style="font-weight: bold">):
-     </span>newrow <span style="font-weight: bold">= </span>row <span style="font-weight: bold">+ </span><span style="color: red">1
+   <span style="color: blue; font-weight: bold">elif</span><span style="font-weight: bold">(</span>move <span
+        style="font-weight: bold">== </span><span style="color: red">'down'</span><span style="font-weight: bold">):
+     </span>newrow <span style="font-weight: bold">= </span>row <span style="font-weight: bold">+ </span><span
+        style="color: red">1
      </span>newcol <span style="font-weight: bold">= </span>col
-   <span style="color: blue; font-weight: bold">elif</span><span style="font-weight: bold">(</span>move <span style="font-weight: bold">== </span><span style="color: red">'left'</span><span style="font-weight: bold">):
+   <span style="color: blue; font-weight: bold">elif</span><span style="font-weight: bold">(</span>move <span
+        style="font-weight: bold">== </span><span style="color: red">'left'</span><span style="font-weight: bold">):
      </span>newrow <span style="font-weight: bold">= </span>row
-     newcol <span style="font-weight: bold">= </span>col <span style="font-weight: bold">- </span><span style="color: red">1
-   </span><span style="color: blue; font-weight: bold">elif</span><span style="font-weight: bold">(</span>move <span style="font-weight: bold">== </span><span style="color: red">'right'</span><span style="font-weight: bold">):
+     newcol <span style="font-weight: bold">= </span>col <span style="font-weight: bold">- </span><span
+        style="color: red">1
+   </span><span style="color: blue; font-weight: bold">elif</span><span style="font-weight: bold">(</span>move <span
+        style="font-weight: bold">== </span><span style="color: red">'right'</span><span style="font-weight: bold">):
      </span>newrow <span style="font-weight: bold">= </span>row
-     newcol <span style="font-weight: bold">= </span>col <span style="font-weight: bold">+ </span><span style="color: red">1
+     newcol <span style="font-weight: bold">= </span>col <span style="font-weight: bold">+ </span><span
+        style="color: red">1
    </span><span style="color: blue; font-weight: bold">else</span><span style="font-weight: bold">:
      </span><span style="color: blue; font-weight: bold">raise </span><span style="color: red">"Illegal Move"
 
    </span><span style="color: green; font-style: italic"># Create a copy of the current eightPuzzle
-   </span>newPuzzle <span style="font-weight: bold">= </span>EightPuzzleState<span style="font-weight: bold">([</span><span style="color: red">0</span><span style="font-weight: bold">, </span><span style="color: red">0</span><span style="font-weight: bold">, </span><span style="color: red">0</span><span style="font-weight: bold">, </span><span style="color: red">0</span><span style="font-weight: bold">, </span><span style="color: red">0</span><span style="font-weight: bold">, </span><span style="color: red">0</span><span style="font-weight: bold">, </span><span style="color: red">0</span><span style="font-weight: bold">, </span><span style="color: red">0</span><span style="font-weight: bold">, </span><span style="color: red">0</span><span style="font-weight: bold">])
-   </span>newPuzzle<span style="font-weight: bold">.</span>cells <span style="font-weight: bold">= [</span>values<span style="font-weight: bold">[:] </span><span style="color: blue; font-weight: bold">for </span>values <span style="color: blue; font-weight: bold">in </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>cells<span style="font-weight: bold">]
+   </span>newPuzzle <span style="font-weight: bold">= </span>EightPuzzleState<span
+        style="font-weight: bold">([</span><span style="color: red">0</span><span
+        style="font-weight: bold">, </span><span style="color: red">0</span><span
+        style="font-weight: bold">, </span><span style="color: red">0</span><span
+        style="font-weight: bold">, </span><span style="color: red">0</span><span
+        style="font-weight: bold">, </span><span style="color: red">0</span><span
+        style="font-weight: bold">, </span><span style="color: red">0</span><span
+        style="font-weight: bold">, </span><span style="color: red">0</span><span
+        style="font-weight: bold">, </span><span style="color: red">0</span><span
+        style="font-weight: bold">, </span><span style="color: red">0</span><span style="font-weight: bold">])
+   </span>newPuzzle<span style="font-weight: bold">.</span>cells <span style="font-weight: bold">= [</span>values<span
+        style="font-weight: bold">[:] </span><span style="color: blue; font-weight: bold">for </span>values <span
+        style="color: blue; font-weight: bold">in </span><span style="color: blue">self</span><span
+        style="font-weight: bold">.</span>cells<span style="font-weight: bold">]
    </span><span style="color: green; font-style: italic"># And update it to reflect the move
-   </span>newPuzzle<span style="font-weight: bold">.</span>cells<span style="font-weight: bold">[</span>row<span style="font-weight: bold">][</span>col<span style="font-weight: bold">] = </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>cells<span style="font-weight: bold">[</span>newrow<span style="font-weight: bold">][</span>newcol<span style="font-weight: bold">]
-   </span>newPuzzle<span style="font-weight: bold">.</span>cells<span style="font-weight: bold">[</span>newrow<span style="font-weight: bold">][</span>newcol<span style="font-weight: bold">] = </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>cells<span style="font-weight: bold">[</span>row<span style="font-weight: bold">][</span>col<span style="font-weight: bold">]
-   </span>newPuzzle<span style="font-weight: bold">.</span>blankLocation <span style="font-weight: bold">= </span>newrow<span style="font-weight: bold">, </span>newcol
+   </span>newPuzzle<span style="font-weight: bold">.</span>cells<span style="font-weight: bold">[</span>row<span
+        style="font-weight: bold">][</span>col<span style="font-weight: bold">] = </span><span
+        style="color: blue">self</span><span style="font-weight: bold">.</span>cells<span
+        style="font-weight: bold">[</span>newrow<span style="font-weight: bold">][</span>newcol<span
+        style="font-weight: bold">]
+   </span>newPuzzle<span style="font-weight: bold">.</span>cells<span style="font-weight: bold">[</span>newrow<span
+        style="font-weight: bold">][</span>newcol<span style="font-weight: bold">] = </span><span style="color: blue">self</span><span
+        style="font-weight: bold">.</span>cells<span style="font-weight: bold">[</span>row<span
+        style="font-weight: bold">][</span>col<span style="font-weight: bold">]
+   </span>newPuzzle<span style="font-weight: bold">.</span>blankLocation <span style="font-weight: bold">= </span>newrow<span
+        style="font-weight: bold">, </span>newcol
 
    <span style="color: blue; font-weight: bold">return </span>newPuzzle
 
  <span style="color: green; font-style: italic"># Utilities for comparison and display
- </span><span style="color: blue; font-weight: bold">def </span>__eq__<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>other<span style="font-weight: bold">):
+ </span><span style="color: blue; font-weight: bold">def </span>__eq__<span style="font-weight: bold">(</span><span
+        style="color: blue">self</span><span style="font-weight: bold">, </span>other<span style="font-weight: bold">):
    </span><span style="color: darkred">"""
        Overloads '==' such that two eightPuzzles with the same configuration
      are equal.
@@ -157,80 +221,163 @@
          EightPuzzleState([1, 0, 2, 3, 4, 5, 6, 7, 8]).result('left')
      True
    """
-   </span><span style="color: blue; font-weight: bold">for </span>row <span style="color: blue; font-weight: bold">in </span>range<span style="font-weight: bold">( </span><span style="color: red">3 </span><span style="font-weight: bold">):
-      </span><span style="color: blue; font-weight: bold">if </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>cells<span style="font-weight: bold">[</span>row<span style="font-weight: bold">] != </span>other<span style="font-weight: bold">.</span>cells<span style="font-weight: bold">[</span>row<span style="font-weight: bold">]:
+   </span><span style="color: blue; font-weight: bold">for </span>row <span
+        style="color: blue; font-weight: bold">in </span>range<span style="font-weight: bold">( </span><span
+        style="color: red">3 </span><span style="font-weight: bold">):
+      </span><span style="color: blue; font-weight: bold">if </span><span style="color: blue">self</span><span
+        style="font-weight: bold">.</span>cells<span style="font-weight: bold">[</span>row<span
+        style="font-weight: bold">] != </span>other<span style="font-weight: bold">.</span>cells<span
+        style="font-weight: bold">[</span>row<span style="font-weight: bold">]:
         </span><span style="color: blue; font-weight: bold">return False
    return True
 
- def </span>__hash__<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">):
-   </span><span style="color: blue; font-weight: bold">return </span>hash<span style="font-weight: bold">(</span>str<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">.</span>cells<span style="font-weight: bold">))
+ def </span>__hash__<span style="font-weight: bold">(</span><span style="color: blue">self</span><span
+        style="font-weight: bold">):
+   </span><span style="color: blue; font-weight: bold">return </span>hash<span
+        style="font-weight: bold">(</span>str<span style="font-weight: bold">(</span><span
+        style="color: blue">self</span><span style="font-weight: bold">.</span>cells<span style="font-weight: bold">))
 
- </span><span style="color: blue; font-weight: bold">def </span>__getAsciiString<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">):
+ </span><span style="color: blue; font-weight: bold">def </span>__getAsciiString<span style="font-weight: bold">(</span><span
+        style="color: blue">self</span><span style="font-weight: bold">):
    </span><span style="color: darkred">"""
      Returns a display string for the maze
    """
    </span>lines <span style="font-weight: bold">= []
-   </span>horizontalLine <span style="font-weight: bold">= (</span><span style="color: red">'-' </span><span style="font-weight: bold">* (</span><span style="color: red">13</span><span style="font-weight: bold">))
-   </span>lines<span style="font-weight: bold">.</span>append<span style="font-weight: bold">(</span>horizontalLine<span style="font-weight: bold">)
-   </span><span style="color: blue; font-weight: bold">for </span>row <span style="color: blue; font-weight: bold">in </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>cells<span style="font-weight: bold">:
+   </span>horizontalLine <span style="font-weight: bold">= (</span><span style="color: red">'-' </span><span
+        style="font-weight: bold">* (</span><span style="color: red">13</span><span style="font-weight: bold">))
+   </span>lines<span style="font-weight: bold">.</span>append<span style="font-weight: bold">(</span>horizontalLine<span
+        style="font-weight: bold">)
+   </span><span style="color: blue; font-weight: bold">for </span>row <span
+        style="color: blue; font-weight: bold">in </span><span style="color: blue">self</span><span
+        style="font-weight: bold">.</span>cells<span style="font-weight: bold">:
      </span>rowLine <span style="font-weight: bold">= </span><span style="color: red">'|'
-     </span><span style="color: blue; font-weight: bold">for </span>col <span style="color: blue; font-weight: bold">in </span>row<span style="font-weight: bold">:
-       </span><span style="color: blue; font-weight: bold">if </span>col <span style="font-weight: bold">== </span><span style="color: red">0</span><span style="font-weight: bold">:
+     </span><span style="color: blue; font-weight: bold">for </span>col <span
+        style="color: blue; font-weight: bold">in </span>row<span style="font-weight: bold">:
+       </span><span style="color: blue; font-weight: bold">if </span>col <span style="font-weight: bold">== </span><span
+        style="color: red">0</span><span style="font-weight: bold">:
          </span>col <span style="font-weight: bold">= </span><span style="color: red">' '
-       </span>rowLine <span style="font-weight: bold">= </span>rowLine <span style="font-weight: bold">+ </span><span style="color: red">' ' </span><span style="font-weight: bold">+ </span>col<span style="font-weight: bold">.</span>__str__<span style="font-weight: bold">() + </span><span style="color: red">' |'
-     </span>lines<span style="font-weight: bold">.</span>append<span style="font-weight: bold">(</span>rowLine<span style="font-weight: bold">)
-     </span>lines<span style="font-weight: bold">.</span>append<span style="font-weight: bold">(</span>horizontalLine<span style="font-weight: bold">)
-   </span><span style="color: blue; font-weight: bold">return </span><span style="color: red">'\n'</span><span style="font-weight: bold">.</span>join<span style="font-weight: bold">(</span>lines<span style="font-weight: bold">)
+       </span>rowLine <span style="font-weight: bold">= </span>rowLine <span style="font-weight: bold">+ </span><span
+        style="color: red">' ' </span><span style="font-weight: bold">+ </span>col<span
+        style="font-weight: bold">.</span>__str__<span style="font-weight: bold">() + </span><span style="color: red">' |'
+     </span>lines<span style="font-weight: bold">.</span>append<span style="font-weight: bold">(</span>rowLine<span
+        style="font-weight: bold">)
+     </span>lines<span style="font-weight: bold">.</span>append<span
+        style="font-weight: bold">(</span>horizontalLine<span style="font-weight: bold">)
+   </span><span style="color: blue; font-weight: bold">return </span><span style="color: red">'\n'</span><span
+        style="font-weight: bold">.</span>join<span style="font-weight: bold">(</span>lines<span
+        style="font-weight: bold">)
 
- </span><span style="color: blue; font-weight: bold">def </span>__str__<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">):
-   </span><span style="color: blue; font-weight: bold">return </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>__getAsciiString<span style="font-weight: bold">()
+ </span><span style="color: blue; font-weight: bold">def </span>__str__<span style="font-weight: bold">(</span><span
+        style="color: blue">self</span><span style="font-weight: bold">):
+   </span><span style="color: blue; font-weight: bold">return </span><span style="color: blue">self</span><span
+        style="font-weight: bold">.</span>__getAsciiString<span style="font-weight: bold">()
 
 </span><span style="color: green; font-style: italic"># TODO: Implement The methods in this class
 
-</span><span style="color: blue; font-weight: bold">class </span>EightPuzzleSearchProblem<span style="font-weight: bold">(</span>search<span style="font-weight: bold">.</span>SearchProblem<span style="font-weight: bold">):
+</span><span style="color: blue; font-weight: bold">class </span>EightPuzzleSearchProblem<span
+        style="font-weight: bold">(</span>search<span style="font-weight: bold">.</span>SearchProblem<span
+        style="font-weight: bold">):
   </span><span style="color: darkred">"""
     Implementation of a SearchProblem for the  Eight Puzzle domain
 
     Each state is represented by an instance of an eightPuzzle.
   """
-  </span><span style="color: blue; font-weight: bold">def </span>__init__<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">,</span>puzzle<span style="font-weight: bold">):
+  </span><span style="color: blue; font-weight: bold">def </span>__init__<span style="font-weight: bold">(</span><span
+        style="color: blue">self</span><span style="font-weight: bold">,</span>puzzle<span style="font-weight: bold">):
     </span><span style="color: red">"Creates a new EightPuzzleSearchProblem which stores search information."
-    </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>puzzle <span style="font-weight: bold">= </span>puzzle
+    </span><span style="color: blue">self</span><span style="font-weight: bold">.</span>puzzle <span
+        style="font-weight: bold">= </span>puzzle
 
-  <span style="color: blue; font-weight: bold">def </span>getStartState<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">):
+  <span style="color: blue; font-weight: bold">def </span>getStartState<span style="font-weight: bold">(</span><span
+        style="color: blue">self</span><span style="font-weight: bold">):
     </span><span style="color: blue; font-weight: bold">return </span>puzzle
       
-  <span style="color: blue; font-weight: bold">def </span>isGoalState<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">,</span>state<span style="font-weight: bold">):
-    </span><span style="color: blue; font-weight: bold">return </span>state<span style="font-weight: bold">.</span>isGoal<span style="font-weight: bold">()
+  <span style="color: blue; font-weight: bold">def </span>isGoalState<span style="font-weight: bold">(</span><span
+        style="color: blue">self</span><span style="font-weight: bold">,</span>state<span style="font-weight: bold">):
+    </span><span style="color: blue; font-weight: bold">return </span>state<span style="font-weight: bold">.</span>isGoal<span
+        style="font-weight: bold">()
    
-  </span><span style="color: blue; font-weight: bold">def </span>getSuccessors<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">,</span>state<span style="font-weight: bold">):
+  </span><span style="color: blue; font-weight: bold">def </span>getSuccessors<span
+        style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">,</span>state<span
+        style="font-weight: bold">):
     </span><span style="color: darkred">"""
       Returns list of (successor, action, stepCost) pairs where
       each succesor is either left, right, up, or down
       from the original state and the cost is 1.0 for each
     """
     </span>succ <span style="font-weight: bold">= []
-    </span><span style="color: blue; font-weight: bold">for </span>a <span style="color: blue; font-weight: bold">in </span>state<span style="font-weight: bold">.</span>legalMoves<span style="font-weight: bold">():
-      </span>succ<span style="font-weight: bold">.</span>append<span style="font-weight: bold">((</span>state<span style="font-weight: bold">.</span>result<span style="font-weight: bold">(</span>a<span style="font-weight: bold">), </span>a<span style="font-weight: bold">, </span><span style="color: red">1</span><span style="font-weight: bold">))
+    </span><span style="color: blue; font-weight: bold">for </span>a <span
+        style="color: blue; font-weight: bold">in </span>state<span style="font-weight: bold">.</span>legalMoves<span
+        style="font-weight: bold">():
+      </span>succ<span style="font-weight: bold">.</span>append<span style="font-weight: bold">((</span>state<span
+        style="font-weight: bold">.</span>result<span style="font-weight: bold">(</span>a<span
+        style="font-weight: bold">), </span>a<span style="font-weight: bold">, </span><span
+        style="color: red">1</span><span style="font-weight: bold">))
     </span><span style="color: blue; font-weight: bold">return </span>succ
 
-  <span style="color: blue; font-weight: bold">def </span>getCostOfActions<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>actions<span style="font-weight: bold">):
+  <span style="color: blue; font-weight: bold">def </span>getCostOfActions<span style="font-weight: bold">(</span><span
+        style="color: blue">self</span><span style="font-weight: bold">, </span>actions<span style="font-weight: bold">):
      </span><span style="color: darkred">"""
       actions: A list of actions to take
  
      This method returns the total cost of a particular sequence of actions.  The sequence must
      be composed of legal moves
      """
-     </span><span style="color: blue; font-weight: bold">return </span>len<span style="font-weight: bold">(</span>actions<span style="font-weight: bold">)
+     </span><span style="color: blue; font-weight: bold">return </span>len<span style="font-weight: bold">(</span>actions<span
+        style="font-weight: bold">)
 
-</span>EIGHT_PUZZLE_DATA <span style="font-weight: bold">= [[</span><span style="color: red">1</span><span style="font-weight: bold">, </span><span style="color: red">0</span><span style="font-weight: bold">, </span><span style="color: red">2</span><span style="font-weight: bold">, </span><span style="color: red">3</span><span style="font-weight: bold">, </span><span style="color: red">4</span><span style="font-weight: bold">, </span><span style="color: red">5</span><span style="font-weight: bold">, </span><span style="color: red">6</span><span style="font-weight: bold">, </span><span style="color: red">7</span><span style="font-weight: bold">, </span><span style="color: red">8</span><span style="font-weight: bold">], 
-                     [</span><span style="color: red">1</span><span style="font-weight: bold">, </span><span style="color: red">7</span><span style="font-weight: bold">, </span><span style="color: red">8</span><span style="font-weight: bold">, </span><span style="color: red">2</span><span style="font-weight: bold">, </span><span style="color: red">3</span><span style="font-weight: bold">, </span><span style="color: red">4</span><span style="font-weight: bold">, </span><span style="color: red">5</span><span style="font-weight: bold">, </span><span style="color: red">6</span><span style="font-weight: bold">, </span><span style="color: red">0</span><span style="font-weight: bold">], 
-                     [</span><span style="color: red">4</span><span style="font-weight: bold">, </span><span style="color: red">3</span><span style="font-weight: bold">, </span><span style="color: red">2</span><span style="font-weight: bold">, </span><span style="color: red">7</span><span style="font-weight: bold">, </span><span style="color: red">0</span><span style="font-weight: bold">, </span><span style="color: red">5</span><span style="font-weight: bold">, </span><span style="color: red">1</span><span style="font-weight: bold">, </span><span style="color: red">6</span><span style="font-weight: bold">, </span><span style="color: red">8</span><span style="font-weight: bold">], 
-                     [</span><span style="color: red">5</span><span style="font-weight: bold">, </span><span style="color: red">1</span><span style="font-weight: bold">, </span><span style="color: red">3</span><span style="font-weight: bold">, </span><span style="color: red">4</span><span style="font-weight: bold">, </span><span style="color: red">0</span><span style="font-weight: bold">, </span><span style="color: red">2</span><span style="font-weight: bold">, </span><span style="color: red">6</span><span style="font-weight: bold">, </span><span style="color: red">7</span><span style="font-weight: bold">, </span><span style="color: red">8</span><span style="font-weight: bold">], 
-                     [</span><span style="color: red">1</span><span style="font-weight: bold">, </span><span style="color: red">2</span><span style="font-weight: bold">, </span><span style="color: red">5</span><span style="font-weight: bold">, </span><span style="color: red">7</span><span style="font-weight: bold">, </span><span style="color: red">6</span><span style="font-weight: bold">, </span><span style="color: red">8</span><span style="font-weight: bold">, </span><span style="color: red">0</span><span style="font-weight: bold">, </span><span style="color: red">4</span><span style="font-weight: bold">, </span><span style="color: red">3</span><span style="font-weight: bold">], 
-                     [</span><span style="color: red">0</span><span style="font-weight: bold">, </span><span style="color: red">3</span><span style="font-weight: bold">, </span><span style="color: red">1</span><span style="font-weight: bold">, </span><span style="color: red">6</span><span style="font-weight: bold">, </span><span style="color: red">8</span><span style="font-weight: bold">, </span><span style="color: red">2</span><span style="font-weight: bold">, </span><span style="color: red">7</span><span style="font-weight: bold">, </span><span style="color: red">5</span><span style="font-weight: bold">, </span><span style="color: red">4</span><span style="font-weight: bold">]]
+</span>EIGHT_PUZZLE_DATA <span style="font-weight: bold">= [[</span><span style="color: red">1</span><span
+        style="font-weight: bold">, </span><span style="color: red">0</span><span
+        style="font-weight: bold">, </span><span style="color: red">2</span><span
+        style="font-weight: bold">, </span><span style="color: red">3</span><span
+        style="font-weight: bold">, </span><span style="color: red">4</span><span
+        style="font-weight: bold">, </span><span style="color: red">5</span><span
+        style="font-weight: bold">, </span><span style="color: red">6</span><span
+        style="font-weight: bold">, </span><span style="color: red">7</span><span
+        style="font-weight: bold">, </span><span style="color: red">8</span><span style="font-weight: bold">],
+                     [</span><span style="color: red">1</span><span style="font-weight: bold">, </span><span
+        style="color: red">7</span><span style="font-weight: bold">, </span><span style="color: red">8</span><span
+        style="font-weight: bold">, </span><span style="color: red">2</span><span
+        style="font-weight: bold">, </span><span style="color: red">3</span><span
+        style="font-weight: bold">, </span><span style="color: red">4</span><span
+        style="font-weight: bold">, </span><span style="color: red">5</span><span
+        style="font-weight: bold">, </span><span style="color: red">6</span><span
+        style="font-weight: bold">, </span><span style="color: red">0</span><span style="font-weight: bold">],
+                     [</span><span style="color: red">4</span><span style="font-weight: bold">, </span><span
+        style="color: red">3</span><span style="font-weight: bold">, </span><span style="color: red">2</span><span
+        style="font-weight: bold">, </span><span style="color: red">7</span><span
+        style="font-weight: bold">, </span><span style="color: red">0</span><span
+        style="font-weight: bold">, </span><span style="color: red">5</span><span
+        style="font-weight: bold">, </span><span style="color: red">1</span><span
+        style="font-weight: bold">, </span><span style="color: red">6</span><span
+        style="font-weight: bold">, </span><span style="color: red">8</span><span style="font-weight: bold">],
+                     [</span><span style="color: red">5</span><span style="font-weight: bold">, </span><span
+        style="color: red">1</span><span style="font-weight: bold">, </span><span style="color: red">3</span><span
+        style="font-weight: bold">, </span><span style="color: red">4</span><span
+        style="font-weight: bold">, </span><span style="color: red">0</span><span
+        style="font-weight: bold">, </span><span style="color: red">2</span><span
+        style="font-weight: bold">, </span><span style="color: red">6</span><span
+        style="font-weight: bold">, </span><span style="color: red">7</span><span
+        style="font-weight: bold">, </span><span style="color: red">8</span><span style="font-weight: bold">],
+                     [</span><span style="color: red">1</span><span style="font-weight: bold">, </span><span
+        style="color: red">2</span><span style="font-weight: bold">, </span><span style="color: red">5</span><span
+        style="font-weight: bold">, </span><span style="color: red">7</span><span
+        style="font-weight: bold">, </span><span style="color: red">6</span><span
+        style="font-weight: bold">, </span><span style="color: red">8</span><span
+        style="font-weight: bold">, </span><span style="color: red">0</span><span
+        style="font-weight: bold">, </span><span style="color: red">4</span><span
+        style="font-weight: bold">, </span><span style="color: red">3</span><span style="font-weight: bold">],
+                     [</span><span style="color: red">0</span><span style="font-weight: bold">, </span><span
+        style="color: red">3</span><span style="font-weight: bold">, </span><span style="color: red">1</span><span
+        style="font-weight: bold">, </span><span style="color: red">6</span><span
+        style="font-weight: bold">, </span><span style="color: red">8</span><span
+        style="font-weight: bold">, </span><span style="color: red">2</span><span
+        style="font-weight: bold">, </span><span style="color: red">7</span><span
+        style="font-weight: bold">, </span><span style="color: red">5</span><span
+        style="font-weight: bold">, </span><span style="color: red">4</span><span style="font-weight: bold">]]
 
-</span><span style="color: blue; font-weight: bold">def </span>loadEightPuzzle<span style="font-weight: bold">(</span>puzzleNumber<span style="font-weight: bold">):
+</span><span style="color: blue; font-weight: bold">def </span>loadEightPuzzle<span style="font-weight: bold">(</span>puzzleNumber<span
+        style="font-weight: bold">):
   </span><span style="color: darkred">"""
     puzzleNumber: The number of the eight puzzle to load.
     
@@ -248,9 +395,13 @@
     | 6 | 7 | 8 |
     -------------
   """
-  </span><span style="color: blue; font-weight: bold">return </span>EightPuzzleState<span style="font-weight: bold">(</span>EIGHT_PUZZLE_DATA<span style="font-weight: bold">[</span>puzzleNumber<span style="font-weight: bold">])
+  </span><span style="color: blue; font-weight: bold">return </span>EightPuzzleState<span
+        style="font-weight: bold">(</span>EIGHT_PUZZLE_DATA<span style="font-weight: bold">[</span>puzzleNumber<span
+        style="font-weight: bold">])
 
-</span><span style="color: blue; font-weight: bold">def </span>createRandomEightPuzzle<span style="font-weight: bold">(</span>moves<span style="font-weight: bold">=</span><span style="color: red">100</span><span style="font-weight: bold">):
+</span><span style="color: blue; font-weight: bold">def </span>createRandomEightPuzzle<span
+        style="font-weight: bold">(</span>moves<span style="font-weight: bold">=</span><span
+        style="color: red">100</span><span style="font-weight: bold">):
  </span><span style="color: darkred">"""
    moves: number of random moves to apply
 
@@ -258,31 +409,62 @@
    a series of 'moves' random moves to a solved
    puzzle.
  """
- </span>puzzle <span style="font-weight: bold">= </span>EightPuzzleState<span style="font-weight: bold">([</span><span style="color: red">0</span><span style="font-weight: bold">,</span><span style="color: red">1</span><span style="font-weight: bold">,</span><span style="color: red">2</span><span style="font-weight: bold">,</span><span style="color: red">3</span><span style="font-weight: bold">,</span><span style="color: red">4</span><span style="font-weight: bold">,</span><span style="color: red">5</span><span style="font-weight: bold">,</span><span style="color: red">6</span><span style="font-weight: bold">,</span><span style="color: red">7</span><span style="font-weight: bold">,</span><span style="color: red">8</span><span style="font-weight: bold">])
- </span><span style="color: blue; font-weight: bold">for </span>i <span style="color: blue; font-weight: bold">in </span>range<span style="font-weight: bold">(</span>moves<span style="font-weight: bold">):
+ </span>puzzle <span style="font-weight: bold">= </span>EightPuzzleState<span style="font-weight: bold">([</span><span
+        style="color: red">0</span><span style="font-weight: bold">,</span><span style="color: red">1</span><span
+        style="font-weight: bold">,</span><span style="color: red">2</span><span style="font-weight: bold">,</span><span
+        style="color: red">3</span><span style="font-weight: bold">,</span><span style="color: red">4</span><span
+        style="font-weight: bold">,</span><span style="color: red">5</span><span style="font-weight: bold">,</span><span
+        style="color: red">6</span><span style="font-weight: bold">,</span><span style="color: red">7</span><span
+        style="font-weight: bold">,</span><span style="color: red">8</span><span style="font-weight: bold">])
+ </span><span style="color: blue; font-weight: bold">for </span>i <span
+        style="color: blue; font-weight: bold">in </span>range<span style="font-weight: bold">(</span>moves<span
+        style="font-weight: bold">):
    </span><span style="color: green; font-style: italic"># Execute a random legal move
-   </span>puzzle <span style="font-weight: bold">= </span>puzzle<span style="font-weight: bold">.</span>result<span style="font-weight: bold">(</span>random<span style="font-weight: bold">.</span>sample<span style="font-weight: bold">(</span>puzzle<span style="font-weight: bold">.</span>legalMoves<span style="font-weight: bold">(), </span><span style="color: red">1</span><span style="font-weight: bold">)[</span><span style="color: red">0</span><span style="font-weight: bold">])
+   </span>puzzle <span style="font-weight: bold">= </span>puzzle<span style="font-weight: bold">.</span>result<span
+        style="font-weight: bold">(</span>random<span style="font-weight: bold">.</span>sample<span
+        style="font-weight: bold">(</span>puzzle<span style="font-weight: bold">.</span>legalMoves<span
+        style="font-weight: bold">(), </span><span style="color: red">1</span><span
+        style="font-weight: bold">)[</span><span style="color: red">0</span><span style="font-weight: bold">])
  </span><span style="color: blue; font-weight: bold">return </span>puzzle
 
-<span style="color: blue; font-weight: bold">if </span>__name__ <span style="font-weight: bold">== </span><span style="color: red">'__main__'</span><span style="font-weight: bold">:
-  </span>puzzle <span style="font-weight: bold">= </span>createRandomEightPuzzle<span style="font-weight: bold">(</span><span style="color: red">25</span><span style="font-weight: bold">)
-  </span><span style="color: blue; font-weight: bold">print</span><span style="font-weight: bold">(</span><span style="color: red">'A random puzzle:'</span><span style="font-weight: bold">)
-  </span><span style="color: blue; font-weight: bold">print</span><span style="font-weight: bold">(</span>puzzle<span style="font-weight: bold">)
+<span style="color: blue; font-weight: bold">if </span>__name__ <span style="font-weight: bold">== </span><span
+        style="color: red">'__main__'</span><span style="font-weight: bold">:
+  </span>puzzle <span style="font-weight: bold">= </span>createRandomEightPuzzle<span style="font-weight: bold">(</span><span
+        style="color: red">25</span><span style="font-weight: bold">)
+  </span><span style="color: blue; font-weight: bold">print</span><span style="font-weight: bold">(</span><span
+        style="color: red">'A random puzzle:'</span><span style="font-weight: bold">)
+  </span><span style="color: blue; font-weight: bold">print</span><span style="font-weight: bold">(</span>puzzle<span
+        style="font-weight: bold">)
   
-  </span>problem <span style="font-weight: bold">= </span>EightPuzzleSearchProblem<span style="font-weight: bold">(</span>puzzle<span style="font-weight: bold">)
-  </span>path <span style="font-weight: bold">= </span>search<span style="font-weight: bold">.</span>breadthFirstSearch<span style="font-weight: bold">(</span>problem<span style="font-weight: bold">)
-  </span><span style="color: blue; font-weight: bold">print</span><span style="font-weight: bold">(</span><span style="color: red">'BFS found a path of %d moves: %s' </span><span style="font-weight: bold">% (</span>len<span style="font-weight: bold">(</span>path<span style="font-weight: bold">), </span>str<span style="font-weight: bold">(</span>path<span style="font-weight: bold">)))
+  </span>problem <span style="font-weight: bold">= </span>EightPuzzleSearchProblem<span
+        style="font-weight: bold">(</span>puzzle<span style="font-weight: bold">)
+  </span>path <span style="font-weight: bold">= </span>search<span
+        style="font-weight: bold">.</span>breadthFirstSearch<span style="font-weight: bold">(</span>problem<span
+        style="font-weight: bold">)
+  </span><span style="color: blue; font-weight: bold">print</span><span style="font-weight: bold">(</span><span
+        style="color: red">'BFS found a path of %d moves: %s' </span><span style="font-weight: bold">% (</span>len<span
+        style="font-weight: bold">(</span>path<span style="font-weight: bold">), </span>str<span
+        style="font-weight: bold">(</span>path<span style="font-weight: bold">)))
   </span>curr <span style="font-weight: bold">= </span>puzzle
   i <span style="font-weight: bold">= </span><span style="color: red">1
-  </span><span style="color: blue; font-weight: bold">for </span>a <span style="color: blue; font-weight: bold">in </span>path<span style="font-weight: bold">:
-    </span>curr <span style="font-weight: bold">= </span>curr<span style="font-weight: bold">.</span>result<span style="font-weight: bold">(</span>a<span style="font-weight: bold">)
-    </span><span style="color: blue; font-weight: bold">print</span><span style="font-weight: bold">(</span><span style="color: red">'After %d move%s: %s' </span><span style="font-weight: bold">% (</span>i<span style="font-weight: bold">, (</span><span style="color: red">""</span><span style="font-weight: bold">, </span><span style="color: red">"s"</span><span style="font-weight: bold">)[</span>i<span style="font-weight: bold">&gt;</span><span style="color: red">1</span><span style="font-weight: bold">], </span>a<span style="font-weight: bold">))
-    </span><span style="color: blue; font-weight: bold">print</span><span style="font-weight: bold">(</span>curr<span style="font-weight: bold">)
+  </span><span style="color: blue; font-weight: bold">for </span>a <span
+        style="color: blue; font-weight: bold">in </span>path<span style="font-weight: bold">:
+    </span>curr <span style="font-weight: bold">= </span>curr<span style="font-weight: bold">.</span>result<span
+        style="font-weight: bold">(</span>a<span style="font-weight: bold">)
+    </span><span style="color: blue; font-weight: bold">print</span><span style="font-weight: bold">(</span><span
+        style="color: red">'After %d move%s: %s' </span><span style="font-weight: bold">% (</span>i<span
+        style="font-weight: bold">, (</span><span style="color: red">""</span><span
+        style="font-weight: bold">, </span><span style="color: red">"s"</span><span style="font-weight: bold">)[</span>i<span
+        style="font-weight: bold">&gt;</span><span style="color: red">1</span><span style="font-weight: bold">], </span>a<span
+        style="font-weight: bold">))
+    </span><span style="color: blue; font-weight: bold">print</span><span style="font-weight: bold">(</span>curr<span
+        style="font-weight: bold">)
     
-    </span>raw_input<span style="font-weight: bold">(</span><span style="color: red">"Press return for the next state..."</span><span style="font-weight: bold">)   </span><span style="color: green; font-style: italic"># wait for key stroke
+    </span>raw_input<span style="font-weight: bold">(</span><span style="color: red">"Press return for the next state..."</span><span
+        style="font-weight: bold">)   </span><span style="color: green; font-style: italic"># wait for key stroke
     </span>i <span style="font-weight: bold">+= </span><span style="color: red">1
 </span>
   </pre>
-  </body>
-  </html>
+</body>
+</html>
   

@@ -1,10 +1,10 @@
 <html>
-  <head>
-  <title>search.py</title>
-  </head>
-  <body>
-  <h3>search.py (<a href="../search.py">original</a>)</h3>
-  <hr>
+<head>
+    <title>search.py</title>
+</head>
+<body>
+<h3>search.py (<a href="../search.py">original</a>)</h3>
+<hr>
   <pre>
 <span style="color: green; font-style: italic"># search.py
 # ---------
@@ -29,13 +29,16 @@ by Pacman agents (in searchAgents.py).
   You do not need to change anything in this class, ever.
   """
   
-  </span><span style="color: blue; font-weight: bold">def </span>getStartState<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">):
+  </span><span style="color: blue; font-weight: bold">def </span>getStartState<span
+          style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">):
      </span><span style="color: darkred">"""
      Returns the start state for the search problem 
      """
      </span>util<span style="font-weight: bold">.</span>raiseNotDefined<span style="font-weight: bold">()
     
-  </span><span style="color: blue; font-weight: bold">def </span>isGoalState<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state<span style="font-weight: bold">):
+  </span><span style="color: blue; font-weight: bold">def </span>isGoalState<span
+          style="font-weight: bold">(</span><span style="color: blue">self</span><span
+          style="font-weight: bold">, </span>state<span style="font-weight: bold">):
      </span><span style="color: darkred">"""
        state: Search state
     
@@ -43,7 +46,9 @@ by Pacman agents (in searchAgents.py).
      """
      </span>util<span style="font-weight: bold">.</span>raiseNotDefined<span style="font-weight: bold">()
 
-  </span><span style="color: blue; font-weight: bold">def </span>getSuccessors<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>state<span style="font-weight: bold">):
+  </span><span style="color: blue; font-weight: bold">def </span>getSuccessors<span
+          style="font-weight: bold">(</span><span style="color: blue">self</span><span
+          style="font-weight: bold">, </span>state<span style="font-weight: bold">):
      </span><span style="color: darkred">"""
        state: Search state
      
@@ -55,7 +60,9 @@ by Pacman agents (in searchAgents.py).
      """
      </span>util<span style="font-weight: bold">.</span>raiseNotDefined<span style="font-weight: bold">()
 
-  </span><span style="color: blue; font-weight: bold">def </span>getCostOfActions<span style="font-weight: bold">(</span><span style="color: blue">self</span><span style="font-weight: bold">, </span>actions<span style="font-weight: bold">):
+  </span><span style="color: blue; font-weight: bold">def </span>getCostOfActions<span
+          style="font-weight: bold">(</span><span style="color: blue">self</span><span
+          style="font-weight: bold">, </span>actions<span style="font-weight: bold">):
      </span><span style="color: darkred">"""
       actions: A list of actions to take
  
@@ -65,7 +72,8 @@ by Pacman agents (in searchAgents.py).
      </span>util<span style="font-weight: bold">.</span>raiseNotDefined<span style="font-weight: bold">()
            
 
-</span><span style="color: blue; font-weight: bold">def </span>tinyMazeSearch<span style="font-weight: bold">(</span>problem<span style="font-weight: bold">):
+</span><span style="color: blue; font-weight: bold">def </span>tinyMazeSearch<span style="font-weight: bold">(</span>problem<span
+          style="font-weight: bold">):
   </span><span style="color: darkred">"""
   Returns a sequence of moves that solves tinyMaze.  For any other
   maze, the sequence of moves will be incorrect, so only use this for tinyMaze
@@ -73,9 +81,14 @@ by Pacman agents (in searchAgents.py).
   </span><span style="color: blue; font-weight: bold">from </span>game <span style="color: blue; font-weight: bold">import </span>Directions
   s <span style="font-weight: bold">= </span>Directions<span style="font-weight: bold">.</span>SOUTH
   w <span style="font-weight: bold">= </span>Directions<span style="font-weight: bold">.</span>WEST
-  <span style="color: blue; font-weight: bold">return  </span><span style="font-weight: bold">[</span>s<span style="font-weight: bold">,</span>s<span style="font-weight: bold">,</span>w<span style="font-weight: bold">,</span>s<span style="font-weight: bold">,</span>w<span style="font-weight: bold">,</span>w<span style="font-weight: bold">,</span>s<span style="font-weight: bold">,</span>w<span style="font-weight: bold">]
+  <span style="color: blue; font-weight: bold">return  </span><span style="font-weight: bold">[</span>s<span
+          style="font-weight: bold">,</span>s<span style="font-weight: bold">,</span>w<span
+          style="font-weight: bold">,</span>s<span style="font-weight: bold">,</span>w<span
+          style="font-weight: bold">,</span>w<span style="font-weight: bold">,</span>s<span
+          style="font-weight: bold">,</span>w<span style="font-weight: bold">]
 
-</span><span style="color: blue; font-weight: bold">def </span>depthFirstSearch<span style="font-weight: bold">(</span>problem<span style="font-weight: bold">):
+</span><span style="color: blue; font-weight: bold">def </span>depthFirstSearch<span style="font-weight: bold">(</span>problem<span
+          style="font-weight: bold">):
   </span><span style="color: darkred">"""
   Search the deepest nodes in the search tree first
   [2nd Edition: p 75, 3rd Edition: p 87]
@@ -94,7 +107,8 @@ by Pacman agents (in searchAgents.py).
   </span><span style="color: red">"*** YOUR CODE HERE ***"
   </span>util<span style="font-weight: bold">.</span>raiseNotDefined<span style="font-weight: bold">()
 
-</span><span style="color: blue; font-weight: bold">def </span>breadthFirstSearch<span style="font-weight: bold">(</span>problem<span style="font-weight: bold">):
+</span><span style="color: blue; font-weight: bold">def </span>breadthFirstSearch<span
+          style="font-weight: bold">(</span>problem<span style="font-weight: bold">):
   </span><span style="color: darkred">"""
   Search the shallowest nodes in the search tree first.
   [2nd Edition: p 73, 3rd Edition: p 82]
@@ -102,19 +116,24 @@ by Pacman agents (in searchAgents.py).
   </span><span style="color: red">"*** YOUR CODE HERE ***"
   </span>util<span style="font-weight: bold">.</span>raiseNotDefined<span style="font-weight: bold">()
       
-</span><span style="color: blue; font-weight: bold">def </span>uniformCostSearch<span style="font-weight: bold">(</span>problem<span style="font-weight: bold">):
+</span><span style="color: blue; font-weight: bold">def </span>uniformCostSearch<span style="font-weight: bold">(</span>problem<span
+          style="font-weight: bold">):
   </span><span style="color: red">"Search the node of least total cost first. "
   "*** YOUR CODE HERE ***"
   </span>util<span style="font-weight: bold">.</span>raiseNotDefined<span style="font-weight: bold">()
 
-</span><span style="color: blue; font-weight: bold">def </span>nullHeuristic<span style="font-weight: bold">(</span>state<span style="font-weight: bold">, </span>problem<span style="font-weight: bold">=</span><span style="color: blue">None</span><span style="font-weight: bold">):
+</span><span style="color: blue; font-weight: bold">def </span>nullHeuristic<span style="font-weight: bold">(</span>state<span
+          style="font-weight: bold">, </span>problem<span style="font-weight: bold">=</span><span style="color: blue">None</span><span
+          style="font-weight: bold">):
   </span><span style="color: darkred">"""
   A heuristic function estimates the cost from the current state to the nearest
   goal in the provided SearchProblem.  This heuristic is trivial.
   """
   </span><span style="color: blue; font-weight: bold">return </span><span style="color: red">0
 
-</span><span style="color: blue; font-weight: bold">def </span>aStarSearch<span style="font-weight: bold">(</span>problem<span style="font-weight: bold">, </span>heuristic<span style="font-weight: bold">=</span>nullHeuristic<span style="font-weight: bold">):
+</span><span style="color: blue; font-weight: bold">def </span>aStarSearch<span style="font-weight: bold">(</span>problem<span
+          style="font-weight: bold">, </span>heuristic<span style="font-weight: bold">=</span>nullHeuristic<span
+          style="font-weight: bold">):
   </span><span style="color: red">"Search the node that has the lowest combined cost and heuristic first."
   "*** YOUR CODE HERE ***"
   </span>util<span style="font-weight: bold">.</span>raiseNotDefined<span style="font-weight: bold">()
@@ -127,6 +146,6 @@ astar <span style="font-weight: bold">= </span>aStarSearch
 ucs <span style="font-weight: bold">= </span>uniformCostSearch
 
   </pre>
-  </body>
-  </html>
+</body>
+</html>
   
