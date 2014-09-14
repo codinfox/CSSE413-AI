@@ -92,18 +92,18 @@ def depthFirstSearch(problem):
     stack.push([[problem.getStartState(), 0, 0], []])
     result = None
     solutionFlag = False
-    # This is a pre-order traversal of graph, directionlist is used to record actions
+    # This is a pre-order traversal of graph, actions is used to record actions
     while not stack.isEmpty():
         top = stack.pop()
-        directionlist = top[1]
+        actions = top[1]
         position = top[0][0]
         if problem.isGoalState(position):
-            result = directionlist
+            result = actions
             solutionFlag = True
             break
         for node in problem.getSuccessors(position):
             if node[0] not in explored:
-                tmpdir = directionlist[:]
+                tmpdir = actions[:]
                 tmpdir.append(node[1])
                 explored.add(node[0])
                 stack.push([node, tmpdir])
@@ -142,11 +142,29 @@ def breadthFirstSearch(problem):
         return result
 
 
-
 def uniformCostSearch(problem):
     "Search the node of least total cost first. "
-    "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    explored = set()
+    frontier = util.PriorityQueueWithFunction(lambda x: problem.getCostOfActions(x[1]))
+    # As always, the second element in the list is action list
+    frontier.push([[problem.getStartState(), 0, 0], []])
+    result = None
+    while not frontier.isEmpty():
+        head = frontier.pop()
+        actions = head[1]
+        position = head[0][0]
+        explored.add(position)
+        if problem.isGoalState(position):
+            result = actions
+            break
+        for node in problem.getSuccessors(position):
+            if node[0] not in explored:
+                tmpactions = actions[:]
+                tmpactions.append(node[1])
+                frontier.push([node, tmpactions])
+
+    if result is not None:
+        return result
 
 
 def nullHeuristic(state, problem=None):
