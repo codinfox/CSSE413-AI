@@ -70,19 +70,6 @@ def tinyMazeSearch(problem):
     return [s, s, w, s, w, w, s, w]
 
 
-def __recursiveDFS(current, explored, problem):
-    if problem.isGoalState(current):
-        return []
-    successors = problem.getSuccessors(current)
-    for node in reversed(successors):
-        if node[0] not in explored:
-            explored.add(node[0])
-            result = __recursiveDFS(node[0], explored, problem)
-            if result is not None:
-                result.append(node)
-                return result
-
-
 def depthFirstSearch(problem):
     """
     Search the deepest nodes in the search tree first
@@ -99,42 +86,47 @@ def depthFirstSearch(problem):
     print "Is the start a goal?", problem.isGoalState(problem.getStartState())
     print "Start's successors:", problem.getSuccessors(problem.getStartState())
     """
-    "*** YOUR CODE HERE ***"
     explored = set()
     explored.add(problem.getStartState())
-    result = __recursiveDFS(problem.getStartState(), explored, problem)
-    result.reverse()
+    stack = util.Stack()
+    stack.push([[problem.getStartState(), 0, 0], []])
+    result = None
+    solutionFlag = False
+    # This is a pre-order traversal of graph, directionlist is used to record actions
+    while not stack.isEmpty():
+        top = stack.pop()
+        directionlist = top[1]
+        position = top[0][0]
+        if problem.isGoalState(position):
+            result = directionlist
+            solutionFlag = True
+            break
+        for node in problem.getSuccessors(position):
+            if node[0] not in explored:
+                tmpdir = directionlist[:]
+                tmpdir.append(node[1])
+                explored.add(node[0])
+                stack.push([node, tmpdir])
 
-    from game import Directions
+    if solutionFlag:
+        from game import Directions
 
-    w = Directions.WEST
-    e = Directions.EAST
-    n = Directions.NORTH
-    s = Directions.SOUTH
-    route = []
-    for node in result:
-        if node[1] == 'South':
-            route.append(s)
-        elif node[1] == 'North':
-            route.append(n)
-        elif node[1] == 'East':
-            route.append(e)
-        elif node[1] == 'West':
-            route.append(w)
+        w = Directions.WEST
+        e = Directions.EAST
+        n = Directions.NORTH
+        s = Directions.SOUTH
+        route = []
+        for node in result:
+            if node == 'South':
+                route.append(s)
+            elif node == 'North':
+                route.append(n)
+            elif node == 'East':
+                route.append(e)
+            elif node == 'West':
+                route.append(w)
 
-    # print route
-    return route
-
-    # print "Start:", problem.getStartState()
-    # print "Is the start a goal?", problem.isGoalState(problem.getStartState())
-    # print "Start's successors:", problem.getSuccessors(problem.getStartState())
-    # from game import Directions
-    # s = Directions.SOUTH
-    # w = Directions.WEST
-    # e = Directions.EAST
-    # print "Cost:", problem.getCostOfActions([s,s,w,s,w,w,s])
-    # return [s,s,w,s,w,w,s,w]
-    # util.raiseNotDefined()
+        return route
 
 
 def breadthFirstSearch(problem):
@@ -142,8 +134,47 @@ def breadthFirstSearch(problem):
     Search the shallowest nodes in the search tree first.
     [2nd Edition: p 73, 3rd Edition: p 82]
     """
-    "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    explored = set()
+    queue = util.Queue()
+    queue.push([[problem.getStartState(), 0, 0], []])
+    explored.add(problem.getStartState())
+    solutionFlag = False
+    result = None
+    while not queue.isEmpty():
+        head = queue.pop()
+        successors = problem.getSuccessors(head[0][0])
+        directionlist = head[1]
+        if problem.isGoalState(head[0][0]):
+            solutionFlag = True
+            result = directionlist
+            break
+        for node in successors:
+            if node[0] not in explored:
+                tmpdir = directionlist[:]
+                tmpdir.append(node[1])
+                explored.add(node[0])
+                queue.push([node, tmpdir])
+
+    if solutionFlag:
+        from game import Directions
+
+        w = Directions.WEST
+        e = Directions.EAST
+        n = Directions.NORTH
+        s = Directions.SOUTH
+        route = []
+        for node in result:
+            if node == 'South':
+                route.append(s)
+            elif node == 'North':
+                route.append(n)
+            elif node == 'East':
+                route.append(e)
+            elif node == 'West':
+                route.append(w)
+
+        return route
+
 
 
 def uniformCostSearch(problem):
