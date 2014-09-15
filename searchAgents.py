@@ -367,6 +367,9 @@ def cornersHeuristic(state, problem):
     on the shortest path from the state to a goal of the problem; i.e.
     it should be admissible (as well as consistent).
     """
+
+    # I also made an inconsistent but efficient version of this heuristic, which
+    # can be found here: https://gist.github.com/codinfox/acd364e4948fecfb56ba
     corners = problem.corners  # These are the corner coordinates
     walls = problem.walls  # These are the walls of the maze, as a Grid (game.py)
 
@@ -377,7 +380,6 @@ def cornersHeuristic(state, problem):
     for idx in range(4):
         if not cornerFlags[idx]:
             unexplored.append(corners[idx])
-    # TODO: the algorithm is inconsistent
     while len(unexplored) != 0:
         toexplore = min(unexplored, key=(lambda x: util.manhattanDistance(current, x)))
         del unexplored[unexplored.index(toexplore)]
@@ -482,7 +484,50 @@ def foodHeuristic(state, problem):
     """
     position, foodGrid = state
     "*** YOUR CODE HERE ***"
-    return 0
+    import heapq
+    class PriorityQueue:
+        """
+          Implements a priority queue data structure. Each inserted item
+          has a priority associated with it and the client is usually interested
+          in quick retrieval of the lowest-priority item in the queue. This
+          data structure allows O(1) access to the lowest-priority item.
+
+          Note that this PriorityQueue does not allow you to change the priority
+          of an item.  However, you may insert the same item multiple times with
+          different priorities.
+        """
+
+        def __init__(self):
+            self.heap = []
+
+        def push(self, item, priority):
+            pair = (priority, item)
+            heapq.heappush(self.heap, pair)
+
+        def pop(self):
+            (priority, item) = heapq.heappop(self.heap)
+            return item, priority
+
+        def isEmpty(self):
+            return len(self.heap) == 0
+
+    foodList = foodGrid.asList()
+    pqueue = PriorityQueue()
+    explored = set()
+    pqueue.push(position, 0)
+    heur = 0
+    while len(explored) != len(foodList)+1:
+        head, priority = pqueue.pop()
+        if head in explored:
+            continue
+        explored.add(head)
+        heur += priority
+        for fpoint in foodList:
+            if fpoint in explored:
+                continue
+            pqueue.push(fpoint, util.manhattanDistance(head, fpoint))
+
+    return heur / 2
 
 
 class ClosestDotSearchAgent(SearchAgent):
