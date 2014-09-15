@@ -187,12 +187,14 @@ def aStarSearch(problem, heuristic=nullHeuristic):
         if problem.isGoalState(position):
             result = actions
             break
+        # This prevH and nowH are only useful for Q6 and Q7
         prevH = heuristic(position, problem)
         for node in problem.getSuccessors(position):
             if node[0] not in explored:
                 nowH = heuristic(node[0], problem)
                 if prevH > nowH+1:
-                    raise Exception("not consistent")
+                    # raise Exception("not consistent")
+                    print "Inconsistent (%d, %d), with difference of %d" % (prevH, nowH, (prevH - nowH))
                 tmpactions = actions[:]
                 tmpactions.append(node[1])
                 frontier.push([node, tmpactions])

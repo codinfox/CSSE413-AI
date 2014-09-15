@@ -516,6 +516,24 @@ def foodHeuristic(state, problem):
     explored = set()
     pqueue.push(position, 0)
     heur = 0
+
+    heurInfo = problem.heuristicInfo
+    if heurInfo.get('initialized') is None:
+        for i in foodList:
+            for j in foodList:
+                if (i, j) not in heurInfo and (j, i) not in heurInfo:
+                    heurInfo[(i, j)] = mazeDistance(i, j, problem.startingGameState)
+
+    def mazeDistanceWithHeurInfo(i, j, heurInfo, problem):
+        if (i, j) in heurInfo:
+            return heurInfo[(i, j)]
+        elif (j, i) in heurInfo:
+            return heurInfo[(j, i)]
+        else:
+            dist = mazeDistance(i, j, problem.startingGameState)
+            heurInfo[(i, j)] = dist
+            return dist
+
     while len(explored) != len(foodList)+1:
         head, priority = pqueue.pop()
         if head in explored:
@@ -525,7 +543,7 @@ def foodHeuristic(state, problem):
         for fpoint in foodList:
             if fpoint in explored:
                 continue
-            pqueue.push(fpoint, util.manhattanDistance(head, fpoint))
+            pqueue.push(fpoint, mazeDistanceWithHeurInfo(head, fpoint, heurInfo, problem))
 
     return heur / 2
 
