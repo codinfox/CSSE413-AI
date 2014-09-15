@@ -146,6 +146,8 @@ def uniformCostSearch(problem):
         head = frontier.pop()
         actions = head[1]
         position = head[0][0]
+        if position in explored:
+            continue
         explored.add(position)
         if problem.isGoalState(position):
             result = actions
@@ -179,6 +181,8 @@ def aStarSearch(problem, heuristic=nullHeuristic):
         head = frontier.pop()
         actions = head[1]
         position = head[0][0]
+        if position in explored:
+            continue
         explored.add(position)
         if problem.isGoalState(position):
             result = actions
