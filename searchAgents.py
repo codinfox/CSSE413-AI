@@ -50,7 +50,7 @@ class GoWestAgent(Agent):
 
 # ######################################################
 # This portion is written for you, but will only work #
-#       after you fill in parts of search.py          #
+# after you fill in parts of search.py          #
 #######################################################
 
 class SearchAgent(Agent):
@@ -485,6 +485,7 @@ def foodHeuristic(state, problem):
     position, foodGrid = state
     "*** YOUR CODE HERE ***"
     import heapq
+
     class PriorityQueue:
         """
           Implements a priority queue data structure. Each inserted item
@@ -523,6 +524,7 @@ def foodHeuristic(state, problem):
             for j in foodList:
                 if (i, j) not in heurInfo and (j, i) not in heurInfo:
                     heurInfo[(i, j)] = mazeDistance(i, j, problem.startingGameState)
+        heurInfo['initialized'] = True
 
     def mazeDistanceWithHeurInfo(i, j, heurInfo, problem):
         if (i, j) in heurInfo:
@@ -534,7 +536,7 @@ def foodHeuristic(state, problem):
             heurInfo[(i, j)] = dist
             return dist
 
-    while len(explored) != len(foodList)+1:
+    while len(explored) != len(foodList) + 1:
         head, priority = pqueue.pop()
         if head in explored:
             continue
@@ -545,7 +547,7 @@ def foodHeuristic(state, problem):
                 continue
             pqueue.push(fpoint, mazeDistanceWithHeurInfo(head, fpoint, heurInfo, problem))
 
-    return heur / 2
+    return heur / 2  # the /2 make heuristic consistent, but without /2 the algorithm is more efficient
 
 
 class ClosestDotSearchAgent(SearchAgent):
@@ -574,8 +576,7 @@ class ClosestDotSearchAgent(SearchAgent):
         walls = gameState.getWalls()
         problem = AnyFoodSearchProblem(gameState)
 
-        "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        return search.breadthFirstSearch(problem)
 
 
 class AnyFoodSearchProblem(PositionSearchProblem):
@@ -610,9 +611,7 @@ class AnyFoodSearchProblem(PositionSearchProblem):
         that will complete the problem definition.
         """
         x, y = state
-
-        "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        return self.food[x][y]
 
 
 ##################
