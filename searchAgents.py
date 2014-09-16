@@ -482,41 +482,16 @@ def foodHeuristic(state, problem):
       problem.heuristicInfo['wallCount'] = problem.walls.count()
     Subsequent calls to this heuristic can access problem.heuristicInfo['wallCount']
     """
+
+    # This part of implementation is inspired by
+    # https://github.com/iveygman/AI-Pacman/blob/master/PA1/searchAgents.py
+    # The original version of my implementation achieves expanding 7002 nodes on
+    # tinySearch maze. The original implementation is here:
+    # https://gist.github.com/codinfox/e3eedae204d572b1bb41
+
     position, foodGrid = state
-    "*** YOUR CODE HERE ***"
-    import heapq
-
-    class PriorityQueue:
-        """
-          Implements a priority queue data structure. Each inserted item
-          has a priority associated with it and the client is usually interested
-          in quick retrieval of the lowest-priority item in the queue. This
-          data structure allows O(1) access to the lowest-priority item.
-
-          Note that this PriorityQueue does not allow you to change the priority
-          of an item.  However, you may insert the same item multiple times with
-          different priorities.
-        """
-
-        def __init__(self):
-            self.heap = []
-
-        def push(self, item, priority):
-            pair = (priority, item)
-            heapq.heappush(self.heap, pair)
-
-        def pop(self):
-            (priority, item) = heapq.heappop(self.heap)
-            return item, priority
-
-        def isEmpty(self):
-            return len(self.heap) == 0
 
     foodList = foodGrid.asList()
-    pqueue = PriorityQueue()
-    explored = set()
-    pqueue.push(position, 0)
-    heur = 0
 
     heurInfo = problem.heuristicInfo
     if heurInfo.get('initialized') is None:
@@ -526,7 +501,7 @@ def foodHeuristic(state, problem):
                     heurInfo[(i, j)] = mazeDistance(i, j, problem.startingGameState)
         heurInfo['initialized'] = True
 
-    def mazeDistanceWithHeurInfo(i, j, heurInfo, problem):
+    def mazeDistanceWithHeurInfo(i, j):
         if (i, j) in heurInfo:
             return heurInfo[(i, j)]
         elif (j, i) in heurInfo:
@@ -536,18 +511,22 @@ def foodHeuristic(state, problem):
             heurInfo[(i, j)] = dist
             return dist
 
-    while len(explored) != len(foodList) + 1:
-        head, priority = pqueue.pop()
-        if head in explored:
-            continue
-        explored.add(head)
-        heur += priority
-        for fpoint in foodList:
-            if fpoint in explored:
-                continue
-            pqueue.push(fpoint, mazeDistanceWithHeurInfo(head, fpoint, heurInfo, problem))
+    largestDist = 0
+    for food1 in foodList:
+        for food2 in foodList:
+            tmpdist = mazeDistanceWithHeurInfo(food1, food2)
+            if tmpdist > largestDist:
+                largestDist = tmpdist;
 
-    return heur / 2  # the /2 make heuristic consistent, but without /2 the algorithm is more efficient
+    nearestDist = None
+    for food in foodList:
+        tmpdist = mazeDistanceWithHeurInfo(position, food)
+        if nearestDist is None or nearestDist > tmpdist:
+            nearestDist = tmpdist
+
+    if nearestDist is None:
+        nearestDist = 0
+    return nearestDist + largestDist
 
 
 class ClosestDotSearchAgent(SearchAgent):
