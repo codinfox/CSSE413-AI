@@ -236,7 +236,42 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
           legal moves.
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        real_depth = self.depth
+        evalfunc = self.evaluationFunction
+        def expmax(state, depth, agentindex):
+            bestmove = {"score": 0, "action": None}
+            if state.isWin() or state.isLose() or depth == real_depth:
+                bestmove["score"] = evalfunc(state)
+                bestmove["action"] = None
+                return bestmove
+            if agentindex == 0: # pacman
+                bestmove["score"] = -float("inf")
+            else:
+                bestmove["score"] = float("inf")
+
+            if agentindex == state.getNumAgents()-1:
+                depth += 1
+
+            if agentindex == 0:
+                for action in state.getLegalActions(agentindex):
+                    next_state = state.generateSuccessor(agentindex, action)
+                    result = expmax(next_state, depth, (agentindex + 1) % state.getNumAgents())
+                    if result["score"] > bestmove["score"]:
+                        bestmove["score"] = result["score"]
+                        bestmove["action"] = action
+            else:
+                overall_estimate_result = 0
+                for action in state.getLegalActions(agentindex):
+                    next_state = state.generateSuccessor(agentindex, action)
+                    result = expmax(next_state, depth, (agentindex + 1) % state.getNumAgents())
+                    overall_estimate_result += result["score"]
+                bestmove["score"] = overall_estimate_result / float(len(state.getLegalActions(agentindex)))
+                bestmove["action"] = None
+            return bestmove
+
+        final_move = expmax(gameState, 0, 0)
+        # print final_move["score"]
+        return final_move["action"]
 
 
 def betterEvaluationFunction(currentGameState):
