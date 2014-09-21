@@ -171,7 +171,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
             return bestmove
 
         final_move = minmax(gameState, 0, 0)
-        print final_move["score"]
+        # print final_move["score"]
         return final_move["action"]
 
 class AlphaBetaAgent(MultiAgentSearchAgent):
@@ -184,7 +184,43 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
           Returns the minimax action using self.depth and self.evaluationFunction
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        real_depth = self.depth
+        evalfunc = self.evaluationFunction
+        def abminmax(state, depth, agentindex, alpha, beta):
+            bestmove = {"score": 0, "action": None}
+            if state.isWin() or state.isLose() or depth == real_depth:
+                bestmove["score"] = evalfunc(state)
+                bestmove["action"] = None
+                return bestmove
+            if agentindex == 0: # pacman
+                bestmove["score"] = alpha
+            else:
+                bestmove["score"] = beta
+
+            if agentindex == state.getNumAgents()-1:
+                depth += 1
+
+            for action in state.getLegalActions(agentindex):
+                next_state = state.generateSuccessor(agentindex, action)
+                result = abminmax(next_state, depth, (agentindex + 1) % state.getNumAgents(), alpha, beta)
+                if agentindex == 0:
+                    if result["score"] > bestmove["score"]:
+                        bestmove["score"] = result["score"]
+                        alpha = result["score"]
+                        bestmove["action"] = action
+                else:
+                    if result["score"] < bestmove["score"]:
+                        bestmove["score"] = result["score"]
+                        beta = result["score"]
+                        bestmove["action"] = action
+                if alpha >= beta:
+                    break
+
+            return bestmove
+
+        final_move = abminmax(gameState, 0, 0, -float("inf"), float("inf"))
+        print final_move["score"]
+        return final_move["action"]
 
 
 class ExpectimaxAgent(MultiAgentSearchAgent):
