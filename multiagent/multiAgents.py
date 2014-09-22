@@ -279,10 +279,65 @@ def betterEvaluationFunction(currentGameState):
       Your extreme ghost-hunting, pellet-nabbing, food-gobbling, unstoppable
       evaluation function (question 5).
 
-      DESCRIPTION: <write something here so we know what you did>
+      DESCRIPTION:
+      This algorithm is inspired by <https://github.com/rahulrrixe/Multi-Agent-Pacman/blob/master/multiAgents.py>
+
+      First, if the current state is winning, we need to definitely choose this state, therefore return inf.
+      By doing so, I also eliminated the problem that the food list is empty.
+
+      Then, we need to avoid to meet the ghosts. We consider the nearest ghost which is most likely to be met.
+      Therefore, we need to find the distance to the nearest ghost. The *higher* the distance is, the safer the
+      pacman can be.
+
+      Next, we should encourage the pacman to eat pellets to fight with ghosts. Therefore, the longer fear time is,
+      the better chance our pacman can win.
+
+      We also want our pacman to always go to the area where food are densely located to enhance the chance and promote
+      the efficiency of our pacman eating thosse food. And we want the distance to the nearest food to be small.
+
+      Therefore, we arrive at the following solution.
+
+      This solution is inspired by an online code. If we make the return statement be like:
+            return fear_award + ghost_penalty - min_food_distance + currentGameState.getScore()
+      and this will be my original implementation. The last experiment result of my own implementation is:
+            Average Score: 811.7
+            Scores:        1513, 4, 1042, 1311, 1173, 88, 228, 1002, 1467, 289
+            Win Rate:      6/10 (0.60)
+            Record:        Win, Loss, Win, Win, Win, Loss, Loss, Win, Win, Loss
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    if currentGameState.isWin():
+        return float("inf")
+
+    import util
+
+    current_position = currentGameState.getPacmanPosition()
+    ghost_distances = [util.manhattanDistance(current_position, ghost_position)
+                       for ghost_position in currentGameState.getGhostPositions()]
+    ghost_penalty = 0
+    if len(ghost_distances) != 0:
+        ghost_penalty = min(ghost_distances)
+
+    fear_times = [ghostState.scaredTimer for ghostState in currentGameState.getGhostStates()]
+    fear_award = sum(fear_times)
+
+    sparse_penalty = 0
+    food_distances = []
+    for food in currentGameState.getFood().asList(): # inspired by others' codes
+        neighborhood = [(food[0]+1, food[1]), (food[0], food[1]+1),
+                        (food[0]-1, food[1]), (food[0], food[1]-1)]
+        for neighbor in neighborhood:
+            if (not currentGameState.hasWall(neighbor[0], neighbor[1]) and
+                not currentGameState.hasFood(neighbor[0], neighbor[1])):
+                sparse_penalty += 1
+        food_distances.append(util.manhattanDistance(current_position, food))
+    min_food_distance = 0
+    if len(food_distances) != 0:
+        min_food_distance = min(food_distances)
+
+    return fear_award + ghost_penalty/(min_food_distance) + currentGameState.getScore() - sparse_penalty
+
+
 
 # Abbreviation
 better = betterEvaluationFunction
