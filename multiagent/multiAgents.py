@@ -219,7 +219,7 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
             return bestmove
 
         final_move = abminmax(gameState, 0, 0, -float("inf"), float("inf"))
-        print final_move["score"]
+        # print final_move["score"]
         return final_move["action"]
 
 
