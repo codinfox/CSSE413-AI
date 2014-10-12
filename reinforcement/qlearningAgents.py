@@ -40,6 +40,7 @@ class QLearningAgent(ReinforcementAgent):
         ReinforcementAgent.__init__(self, **args)
 
         "*** YOUR CODE HERE ***"
+        self.q_value = util.Counter()
 
     def getQValue(self, state, action):
         """
@@ -48,7 +49,7 @@ class QLearningAgent(ReinforcementAgent):
           a state or (state,action) tuple
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        return self.q_value[(state, action)]
 
 
     def getValue(self, state):
@@ -59,7 +60,15 @@ class QLearningAgent(ReinforcementAgent):
           terminal state, you should return a value of 0.0.
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        actions = self.getLegalActions(state)
+        if len(actions) == 0:
+            return 0.0
+        value = -float("inf")
+        for action in actions:
+            tmp_value = self.getQValue(state, action)
+            if tmp_value > value:
+                value = tmp_value
+        return value
 
     def getPolicy(self, state):
         """
@@ -68,7 +77,18 @@ class QLearningAgent(ReinforcementAgent):
           you should return None.
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        actions = self.getLegalActions(state)
+        value = -float("inf")
+        policy = None
+        for action in actions:
+            tmp_value = self.getQValue(state, action)
+            if tmp_value > value:
+                value = tmp_value
+                policy = action
+            elif tmp_value == value:
+                policy = random.choice((policy, action))
+        return policy
+
 
     def getAction(self, state):
         """
@@ -99,7 +119,11 @@ class QLearningAgent(ReinforcementAgent):
           it will be called on your behalf
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        next_q = self.getValue(nextState)
+        sample_val = reward + self.discount*next_q
+        self.q_value[(state, action)] = \
+            (1-self.alpha)*self.q_value[(state, action)] + self.alpha*sample_val
+
 
 
 class PacmanQAgent(QLearningAgent):
