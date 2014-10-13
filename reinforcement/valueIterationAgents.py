@@ -37,7 +37,7 @@ class ValueIterationAgent(ValueEstimationAgent):
         self.discount = discount
         self.iterations = iterations
         self.values = util.Counter()  # A Counter is a dict with default 0
-        self.q_values = util.Counter()
+        # self.q_values = util.Counter()
 
         "*** YOUR CODE HERE ***"
         states = mdp.getStates()
@@ -46,7 +46,7 @@ class ValueIterationAgent(ValueEstimationAgent):
             for state in states:
                 actions = mdp.getPossibleActions(state)
                 v_max_a = -float("inf")
-                if state == "TERMINAL_STATE":
+                if len(actions) == 0:
                     v_max_a = 0
                 for action in actions:
                     trans_and_probs = mdp.getTransitionStatesAndProbs(state, action)
@@ -56,7 +56,7 @@ class ValueIterationAgent(ValueEstimationAgent):
                             prob*(mdp.getReward(state, action, next_state)+self.discount*self.values[next_state])
                     if v_a > v_max_a:
                         v_max_a = v_a
-                    self.q_values[(state, action)] = v_a
+                    # self.q_values[(state, action)] = v_a
                 tmp_values[state] = v_max_a
             self.values = tmp_values
 
@@ -76,7 +76,13 @@ class ValueIterationAgent(ValueEstimationAgent):
           to derive it on the fly.
         """
         "*** YOUR CODE HERE ***"
-        return self.q_values[(state, action)]
+        # return self.q_values[(state, action)]
+        v_a = 0
+        for next_state, prob in self.mdp.getTransitionStatesAndProbs(state, action):
+            v_a += \
+                prob*(self.mdp.getReward(state, action, next_state)+self.discount*self.values[next_state])
+        return v_a
+
 
     def getPolicy(self, state):
         """
