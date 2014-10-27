@@ -1,6 +1,13 @@
 import os
+import re
+from nltk.stem.wordnet import WordNetLemmatizer
 path = r'./Presidents'  # remove the trailing '\'
 data = {}
+lmtzr = WordNetLemmatizer()
+
+def remove_non_ascii_2(text):
+    return re.sub(r'[^\x00-\x7F]+',' ', text)
+
 for dir_entry in os.listdir(path):
     dir_entry_path = os.path.join(path, dir_entry)
     if os.path.isfile(dir_entry_path):
@@ -10,8 +17,14 @@ for dir_entry in os.listdir(path):
             proc_file = proc_file.replace(',',' ') # remove comma
             proc_file = proc_file.replace('"', ' ') # remove double qoute
             proc_file = proc_file.replace(".", ' ') # remove period
-            proc_file = proc_file.replace(":", ' ') # remove period
-            proc_file = " ".join(proc_file.split())
+            proc_file = proc_file.replace(":", ' ') # remove colon
+            proc_file = remove_non_ascii_2(proc_file) # illegal character
+            # proc_file = proc_file.decode('utf-8')
+            words = proc_file.split()
+            words = [lmtzr.lemmatize(word) for word in words] # lemmatize
+
+            proc_file = " ".join(words)
+            proc_file = proc_file.lower()
 
             data[dir_entry] = proc_file
 
