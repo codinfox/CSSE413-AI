@@ -10,6 +10,7 @@ for dir_entry in os.listdir(path):
             proc_file = proc_file.replace(',',' ') # remove comma
             proc_file = proc_file.replace('"', ' ') # remove double qoute
             proc_file = proc_file.replace(".", ' ') # remove period
+            proc_file = proc_file.replace(":", ' ') # remove period
             proc_file = " ".join(proc_file.split())
 
             data[dir_entry] = proc_file
