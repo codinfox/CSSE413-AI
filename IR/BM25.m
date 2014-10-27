@@ -55,4 +55,7 @@ for idx = 1:N
     end
 end
 freq = log2((N-nd+0.5)/(nd+0.5));
+if freq < 0.005 % avoid negtive contribution and do not ignore commen words
+    freq = 0.005;
+end
 end
