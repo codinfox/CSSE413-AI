@@ -10,7 +10,11 @@ querybigrams=findBigrams(query);
 textbigrams=findBigrams(text);
 scoreP=length(intersect(querybigrams,textbigrams))/length(querybigrams);
 scoreQ=length(intersect(querybigrams,textbigrams))/length(textbigrams);
-score=(2*scoreP*scoreQ)/(scoreP+scoreQ);
+if scoreP+scoreQ>0
+    score=(2*scoreP*scoreQ)/(scoreP+scoreQ);
+else
+    score=0;
+end
 
 
 
