@@ -1,1 +1,9 @@
 .idea/
+IR/.metadata
+*.index
+*.prefs
+IR/IR/.classpath
+*.snap
+*.xml
+*.properties
+*.log
