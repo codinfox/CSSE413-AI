@@ -18,6 +18,7 @@ for dir_entry in os.listdir(path):
             proc_file = proc_file.replace('"', ' ') # remove double qoute
             proc_file = proc_file.replace(".", ' ') # remove period
             proc_file = proc_file.replace(":", ' ') # remove colon
+            proc_file = proc_file.replace("--", ' ') #
             proc_file = remove_non_ascii_2(proc_file) # illegal character
             # proc_file = proc_file.decode('utf-8')
             words = proc_file.split()
