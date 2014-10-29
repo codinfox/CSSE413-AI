@@ -45,4 +45,4 @@ end
 
 ngram_corpus_sorted = sortrows(ngram_corpus, -2);
 
-save('ngram_corpus.mat', 'ngram_corpus_sorted', 'ngram_corpus', 'ngram_corpus_per_passage, n');
+save('ngram_corpus.mat', 'ngram_corpus_sorted', 'ngram_corpus', 'ngram_corpus_per_passage', n);
