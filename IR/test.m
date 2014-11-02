@@ -16,7 +16,11 @@ queries={
     {'election', '1982'},
     {'business', 'growth'},
     {'economy'},
-    {'abolish', 'slavery'}
+    {'abolish', 'slavery'},
+    {'war'},
+    {'civil', 'war'},
+    {'soviet', 'russia'},
+    {'soviet', 'russia', 'leader'}
  };
  for i=1:length(queries)
      query=queries{i};

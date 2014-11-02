@@ -6,21 +6,36 @@ queries={
     {'assassinated','president'},
     {'great','president'},
     {'first','president'},
-    {'civil','war','president'},{'good', 'president'}, {'president', 'who', 'is', 'good'}};
- %for i=1:length(queries)
- %    query=queries{i};
+    {'civil','war','president'},
+    {'united', 'states'},
+    {'USA'},
+    {'good', 'president'},
+    {'president', 'who', 'is', 'good'},
+    {'international', 'war'},
+    {'elected', '1982'},
+    {'election', '1982'},
+    {'business', 'growth'},
+    {'economy'},
+    {'abolish', 'slavery'},
+    {'war'},
+    {'civil', 'war'},
+    {'leader', 'russia'},
+    {
+ };
+ for i=1:length(queries)
+     query=queries{i};
      
      
- %    passagescores=passage_term_matching(data,query);
- %    counter=j
- %    for j=1:length(data)
- %        scores_passage_term_matching(i,j)=passagescores(j);
- %        
- %       scores_BM25(i,j)=BM25({data{j,1},data{j,2}},query);
- %        
- %        scores_skip_bi_gram(i,j)=skip_bi_gram(data{j,2},query);
- %    end
- %end
+     passagescores=passage_term_matching(data,query);
+     counter=j
+     for j=1:length(data)
+         scores_passage_term_matching(i,j)=passagescores(j);
+         
+        scores_BM25(i,j)=BM25({data{j,1},data{j,2}},query);
+         
+         scores_skip_bi_gram(i,j)=skip_bi_gram(data{j,2},query);
+     end
+ end
 close all
 for num=1:length(queries)
 
